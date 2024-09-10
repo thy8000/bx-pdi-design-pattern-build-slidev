@@ -49,7 +49,7 @@ transition: fade-out
 <style>
 h1 {
   background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-image: linear-gradient(45deg, #00695a 10%, #5fc0b1 20%);
   background-size: 100%;
   -webkit-background-clip: text;
   -moz-background-clip: text;
@@ -68,37 +68,40 @@ h1 {
   }
 </style>
 
-<!--
-Here is another comment.
--->
-
 ---
 transition: slide-up
 level: 2
 ---
 
-# Navigation
+# Porquê utilizar o Builder ?
 
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/navigation.html)
+<div>
+  <h2>Problema 1</h2>
+  <div class="flex gap-8">
+    <div class="w-1/2 text-sm">
+      <p>Imagine que precisamos criar uma classe do tipo House. Uma casa simples pode ser constrúida com quatro paredes, um piso e um telhado. Mas, e se precisássemos de uma casa com mais coisas e mais detalhes, como por exemplo, janelas, piscina, etc... ?</p>
+      <p>A solução mais simples seria extender a classe House e criar várias subclasses que cumpra todos os parâmetros necessários para a casa. No começo, a solução seria viável, porém, com o tempo, qualquer novo parâmetro para a casa exigiria mais e mais subclasses, crescendo muito a hierarquia da classe.</p>
+    </div>
+    <div>
+      <img src="https://refactoring.guru/images/patterns/diagrams/builder/problem1.png?id=11e715c5c97811f848c48e0f399bb05e">
+    </div>
+  </div>
+</div>
 
-## Keyboard Shortcuts
-
-|     |     |
-| --- | --- |
-| <kbd>right</kbd> / <kbd>space</kbd>| next animation or slide |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd> | previous slide |
-| <kbd>down</kbd> | next slide |
-
-<!-- https://sli.dev/guide/animations.html#click-animations -->
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-  alt=""
-/>
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
-
+<style>
+  h1 {
+    background-color: #2B90B6;
+    background-image: linear-gradient(45deg, #00695a 10%, #5fc0b1 20%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+  }
+  .slidev-layout {
+    background-image: url(./assets/images/background-secundario.jpg) !important;
+  }
+</style>
 ---
 layout: two-cols
 layoutClass: gap-16
