@@ -35,7 +35,7 @@ mdc: true
 </style>
 
 ---
-transition: fade-out
+transition: slide-up
 ---
 
 # O que é o Builder ? 
@@ -69,7 +69,7 @@ h1 {
 </style>
 
 ---
-transition: slide-up
+transition: fade-out
 level: 2
 ---
 
@@ -83,7 +83,9 @@ level: 2
       <p>A solução mais simples seria extender a classe House e criar várias subclasses que cumpra todos os parâmetros necessários para a casa. No começo, a solução seria viável, porém, com o tempo, qualquer novo parâmetro para a casa exigiria mais e mais subclasses, crescendo muito a hierarquia da classe.</p>
     </div>
     <div>
-      <img src="https://refactoring.guru/images/patterns/diagrams/builder/problem1.png?id=11e715c5c97811f848c48e0f399bb05e">
+    <figure>
+      <img src="https://refactoring.guru/images/patterns/diagrams/builder/problem1.png?id=11e715c5c97811f848c48e0f399bb05e"><figcaption class="text-xs text-gray">No começo, essa solução seria viável, porém, com o tempo, seria necessário criar dezenas de subclasses.</figcaption>
+    </figure>
     </div>
   </div>
 </div>
@@ -103,75 +105,83 @@ level: 2
   }
 </style>
 ---
-layout: two-cols
-layoutClass: gap-16
+transition: slide-up
 ---
 
-# Table of contents
+# Porquê utilizar o Builder ?
 
-You can use the `Toc` component to generate a table of contents for your slides:
+<div>
+  <h2>Problema 2</h2>
+  <div class="flex gap-8">
+    <div class="w-4/5 text-sm">
+      <p>Uma abordagem alternativa que poderia ser utilizado para mitigar o problema. A abordagem consistiria em criar um construtor na classe House, com todos os parâmetros possíveis para o objeto da casa. Essa abordagem solucionaria o problema de ter várias subclasses, porém, ia gerar outro problema.</p>
+      <p>Na maioria dos casos, a maioria dos parâmetros não seriam usados, criando chamadas de construtores bem feias, longas e complexas.</p>
+    </div>
+    <div>
+    <figure>
+      <img src="https://refactoring.guru/images/patterns/diagrams/builder/problem2.png?id=2e91039b6c7d2d2df6ee519983a3b036"><figcaption class="text-xs text-gray">Um construtor com muitos parâmetros resolveria o problema inicial, porém, ia gerar uma cascata de construtores com inúmeros true e falses, deixando o entendimento da classe confusa.</figcaption>
+    </figure>
+    </div>
+  </div>
+</div>
 
-```html
-<Toc minDepth="1" maxDepth="1"></Toc>
-```
-
-The title will be inferred from your slide content, or you can override it with `title` and `level` in your frontmatter.
-
-::right::
-
-<Toc v-click minDepth="1" maxDepth="2"></Toc>
-
----
-layout: image-right
-image: https://cover.sli.dev
----
-
-# Code
-
-Use code snippets and get the highlighting directly, and even types hover![^1]
-
-```ts {all|5|7|7-8|10|all} twoslash
-// TwoSlash enables TypeScript hover information
-// and errors in markdown code blocks
-// More at https://shiki.style/packages/twoslash
-
-import { computed, ref } from 'vue'
-
-const count = ref(0)
-const doubled = computed(() => count.value * 2)
-
-doubled.value = 2
-```
-
-<arrow v-click="[4, 5]" x1="350" y1="310" x2="195" y2="334" color="#953" width="2" arrowSize="1" />
-
-<!-- This allow you to embed external code blocks -->
-<<< @/snippets/external.ts#snippet
-
-<!-- Footer -->
-[^1]: [Learn More](https://sli.dev/guide/syntax.html#line-highlighting)
-
-<!-- Inline style -->
 <style>
-.footnotes-sep {
-  @apply mt-5 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
-}
+  h1 {
+    background-color: #2B90B6;
+    background-image: linear-gradient(45deg, #00695a 10%, #5fc0b1 20%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+  }
+  .slidev-layout {
+    background-image: url(./assets/images/background-secundario.jpg) !important;
+  }
+</style>
+
+---
+transition: fade-out
+---
+
+# Solução
+
+<div>
+  <h2>Padrão Builder</h2>
+  <div class="flex gap-8">
+    <div class="w-4/5 text-sm">
+      <p>A solução seria a implementação do padrão Builder.</p>
+      <p>O padrão Builder consiste em extrair e separar o código de construção de um objeto em partes separadas que chamamos de Builders.</p>
+      <p>Com o padrão Builder, você organiza a construção do objeto em várias etapas em métodos dentro de um objeto. A parte importante desse processo, é que você não precisa chamar todas as etapas, apenas as que você irá utilizar na construção do objeto.</p>
+    </div>
+    <div>
+    <figure>
+      <img src="https://refactoring.guru/images/patterns/diagrams/builder/solution1.png?id=8ce82137f8935998de802cae59e00e11"><figcaption class="text-xs text-gray">O padrão Builder separa a criação do objeto em vários métodos diferentes, permitindo a construção do mesmo por etapas.</figcaption>
+    </figure>
+    </div>
+  </div>
+</div>
+
+<style>
+  h1 {
+    background-color: #2B90B6;
+    background-image: linear-gradient(45deg, #00695a 10%, #5fc0b1 20%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+  }
+  .slidev-layout {
+    background-image: url(./assets/images/background-secundario.jpg) !important;
+  }
 </style>
 
 <!--
-Notes can also sync with clicks
+$house = new House();
 
-[click] This will be highlighted after the first click
-
-[click] Highlighted with `count = ref(0)`
-
-[click:3] Last click (skip two clicks)
+$house->buildWalls()
+$houser->buildDoors();
 -->
 
 ---
