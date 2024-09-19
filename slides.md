@@ -208,3 +208,37 @@ transition: fade-out
     background-image: url(./assets/images/background-secundario.jpg) !important;
   }
 </style>
+
+---
+transition: fade-out
+---
+
+# Solução
+
+<div>
+  <h2>Padrão Builder</h2>
+  <div class="flex gap-8">
+    <div class="w-4/5 text-sm">
+      <p>Se você tem muitas classes Builder que estão repetindo as mesmas etapas de construção sempre, você pode criar uma classe chamada Director e definir as etapas de construção dentro dessa classe. A classe Director irá definir quais são as etapas de construção obrigatórias e a ordem delas.</p>
+      <p>Você não é obrigado a ter uma classe Director dentro do padrão Builder. Você pode definir e instanciar as etapas de construção diretamente no código do cliente. A classe Director é uma boa solução para reutilizar as etapas de construção em várias classes Builder, e também serve para abstrair os detalhes de construção no código do cliente. Basta associar uma classe Builder à um Diretor, iniciar a construção com um Diretor, e obter o resultado da construção.</p>
+    </div>
+    <div>
+    <figure><img src="https://refactoring.guru/images/patterns/content/builder/builder-comic-2-en.png?id=e19ff53e1494c06178476e2b8c068ec8"><figcaption class="text-xs text-gray">A classe Director define as etapas de construção necessárias para as classes Builder, a ordem delas e abstrai os detalhes da construção no código do cliente.</figcaption></figure>
+    </div>
+  </div>
+</div>
+
+<style>
+  h1 {
+    background-color: #2B90B6;
+    background-image: linear-gradient(45deg, #00695a 10%, #5fc0b1 20%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+  }
+  .slidev-layout {
+    background-image: url(./assets/images/background-secundario.jpg) !important;
+  }
+</style>
