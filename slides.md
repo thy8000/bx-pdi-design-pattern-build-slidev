@@ -8,7 +8,7 @@ class: text-center
 highlighter: shiki
 drawings:
   persist: false
-transition: slide-left
+transition: slide-up
 mdc: true
 ---
 
@@ -104,7 +104,7 @@ transition: fade-out
   }
 </style>
 ---
-transition: slide-up
+transition: fade-out
 ---
 
 # Porquê utilizar o Builder ?
@@ -140,7 +140,7 @@ transition: slide-up
 </style>
 
 ---
-transition: fade-out
+transition: slide-up
 ---
 
 # Solução
@@ -177,13 +177,13 @@ transition: fade-out
 </style>
 
 ---
-transition: fade-out
+transition: slide-up
 ---
 
-# Solução
+# Sobre o padrão Builder
 
 <div>
-  <h2>Padrão Builder</h2>
+  <h2>Interface</h2>
   <div class="flex gap-8">
     <div class="w-4/5 text-sm">
       <p>Uma das extensões que você pode utilizar na classe Builder é uma Interface.</p><p>Caso você tenha classes Builder que possuem os mesmos métodos, só que com funcionamento diferente, você pode utilizar uma interface com todos os métodos que o Builder deve ter, e dentro da classe Builder você modifica o método de acordo com a necessidade.</p><p>Vamos utilizar como exemplo a classe House. Todas as casas possuem paredes e telhados, porém, o material utilizado nas paredes e telhados são diferentes. Podem ser tijolo, bambu, madeira, etc...</p><p>Uma solução para isso seria criar uma interface com os métodos que constroem a casa, e dentro do método da classe House, você modifica as paredes e os telhados com o material correto</p>
@@ -213,10 +213,10 @@ transition: fade-out
 transition: fade-out
 ---
 
-# Solução
+# Sobre o padrão Builder
 
 <div>
-  <h2>Padrão Builder</h2>
+  <h2>Director</h2>
   <div class="flex gap-8">
     <div class="w-4/5 text-sm">
       <p>Se você tem muitas classes Builder que estão repetindo as mesmas etapas de construção sempre, você pode criar uma classe chamada Director e definir as etapas de construção dentro dessa classe. A classe Director irá definir quais são as etapas de construção obrigatórias e a ordem delas.</p>
@@ -240,5 +240,32 @@ transition: fade-out
   }
   .slidev-layout {
     background-image: url(./assets/images/background-secundario.jpg) !important;
+  }
+</style>
+
+---
+transition: slide-up
+---
+
+# Estrutura
+
+<div class="relative flex justify-center">
+  <p class="box absolute left-0 text-sm"><strong>1</strong>A interface do Builder declara etapas de construção do produto que são comuns a todos os tipos de construtores.</p>
+  <img class="h-[450px]" src="https://refactoring.guru/images/patterns/diagrams/builder/structure.png?id=fe9e23559923ea0657aa5fe75efef333">
+</div>
+
+<style>
+  .box {
+    padding: 1rem;
+    max-width: 30ch;
+    background-color: #f5f5f5;
+    color: black;
+  }
+
+  .box strong {
+    margin-left: -25px;
+    
+    font-size: 40px;
+    color: #ccc;
   }
 </style>
