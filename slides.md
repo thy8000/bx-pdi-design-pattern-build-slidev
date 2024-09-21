@@ -250,8 +250,12 @@ transition: slide-up
 # Estrutura
 
 <div class="relative flex justify-center">
-  <p class="box absolute left-0 text-sm"><strong>1</strong>A interface do Builder declara etapas de construção do produto que são comuns a todos os tipos de construtores.</p>
+  <p class="box absolute left-0 text-xs"><strong>1</strong>A interface do Builder declara etapas de construção do produto que são comuns a todos os tipos de construtores.</p>
+  <p class="box absolute left-0 top-32 text-xs"><strong>2</strong>Concrete Builders fornecem várias etapas de construção. Os concrete builders podem produzir produtos que não seguem a interface.</p>
+  <p class="box absolute left-0 top-64 text-xs"><strong>3</strong>Produtos são os objetos resultantes. Produtos não precisam pertencer à mesma hierarquia de classes ou interface.</p>
   <img class="h-[450px]" src="https://refactoring.guru/images/patterns/diagrams/builder/structure.png?id=fe9e23559923ea0657aa5fe75efef333">
+  <p class="box absolute right-0 text-xs"><strong>4</strong>A classe Director escolhe a ordem das etapas de construção e quais serão reutilizadas por todos os Builders.</p>
+  <p class="box absolute right-0 top-32 text-xs"><strong>5</strong>O cliente deve associar um dos objetos Builder ao Director. Isso pode ser feito pelo parâmetro do construtor do Director. Então, ele irá usar esse Builder para construir as próximas etapas. Se você quiser utilizar Builders diferentes, você pode passar o objeto Builder para o método de produção do Director.</p>
 </div>
 
 <style>
@@ -260,6 +264,7 @@ transition: slide-up
     max-width: 30ch;
     background-color: #f5f5f5;
     color: black;
+    line-height: 14px;
   }
 
   .box strong {
